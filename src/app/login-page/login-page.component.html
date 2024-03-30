@@ -1,0 +1,30 @@
+<div class="wrapper">
+    <div class="login_boxes">
+        <img src="assets/loginpage.png" alt="login_img">
+    </div>
+    <div class="login_boxes">
+        <div class="login_page">
+            <div class="page_title">Admin Login</div>
+            <form [formGroup]="admin_login">
+
+                <mat-form-field appearance="outline" style="margin-top: 10%;">
+                    <mat-label>Username</mat-label>
+                    <input matInput placeholder="Enter Userame" formControlName="username">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label> Enter your password</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"
+                        onkeypress="return this.value.length < 20" (keyup.enter)="login()">
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                <button mat-raised-button color="primary" (click)="login()">Sign In</button>
+                <button mat-raised-button color="warn" (click)="forgot()">Forgot Password?</button>
+            </form>
+        </div>
+    </div>
+</div>

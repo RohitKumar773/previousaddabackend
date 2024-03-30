@@ -1,0 +1,36 @@
+<div class="add_form">
+    <div class="form_head">
+      <div class="form_title">
+        Add Entrance Question
+      </div>
+      <div class="cancel_tn">
+        <mat-icon mat-dialog-close>cancel</mat-icon>
+      </div>
+    </div>
+  
+    <div class="form_area">
+      <form [formGroup]="EntranceQuestionForm">
+  
+        <mat-form-field style="margin-top: 10%;">
+          <mat-label>Select Entrance Exam</mat-label>
+          <mat-select disableRipple formControlName="entrance_id_fk">
+            <mat-option *ngFor="let entranceQuestion of EntranceQuestionData" [value]="entranceQuestion.entrance_id">
+              {{entranceQuestion.entrance_exam_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Entrance Question Name</mat-label>
+          <input matInput placeholder="Enter Question Name" formControlName="e_prev_ques_name">
+        </mat-form-field>
+  
+        <input type="file" id="pdf_files" (change)="onFileChanged($event)" formControlName="e_prev_ques_file">
+  
+        <input type="number" [ngModel]="admin" formControlName="admin_id_fk" readonly hidden>
+        <input type="number" formControlName="e_previous_id" readonly hidden>
+      </form>
+      <button mat-raised-button color="primary" class="submit_btn" (click)="addEntranceQuestion()">Submit</button>
+      <button mat-raised-button color="warn" class="reset_btn">Reset</button>
+    </div>
+  </div>

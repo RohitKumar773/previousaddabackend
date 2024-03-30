@@ -1,0 +1,24 @@
+<div class="add_form">
+    <div class="form_head">
+        <div class="form_title">
+            Add Government Exam
+        </div>
+        <div class="cancel_tn">
+            <mat-icon mat-dialog-close>cancel</mat-icon>
+        </div>
+    </div>
+
+    <div class="form_area">
+        <form [formGroup]="govForm">
+            <mat-form-field appearance="fill">
+                <mat-label>Exam Name</mat-label>
+                <input matInput placeholder="Enter Government Exam Name" formControlName="gov_exam_name">
+            </mat-form-field>
+
+            <input [ngModel]="admin" formControlName="admin_id_fk" type="number" hidden>
+            <input type="number" formControlName="gov_id" hidden>
+        </form>
+        <button mat-raised-button color="primary" class="submit_btn" (click)="addGovExam()">Submit</button>
+        <button mat-raised-button color="warn" class="reset_btn" (click)="reset()">Reset</button>
+    </div>
+</div>

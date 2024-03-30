@@ -1,0 +1,55 @@
+<div class="add_form">
+    <div class="form_head">
+      <div class="form_title">
+        Add University Question
+      </div>
+      <div class="cancel_tn">
+        <mat-icon mat-dialog-close>cancel</mat-icon>
+      </div>
+    </div>
+  
+    <div class="form_area">
+      <form [formGroup]="universityQuestionForm">
+  
+        <mat-form-field style="margin-top: 10%;">
+          <mat-label>Select University</mat-label>
+          <mat-select disableRipple formControlName="university_id_fk" (valueChange)="getUniversityCourse($event)">
+            <mat-option *ngFor="let University of universityData"
+              [value]="University.university_id">{{University.university_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Select Course</mat-label>
+          <mat-select disableRipple formControlName="univ_crse_id_fk" (valueChange)="getUniversitySemester($event)">
+            <mat-option *ngFor="let courseFilterData of courseData"
+              [value]="courseFilterData.university_course_id">{{courseFilterData.university_course_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Select Semester</mat-label>
+          <mat-select disableRipple formControlName="univ_smstr_id_fk">
+            <mat-option *ngFor="let universitySemester of semesterData" [value]="universitySemester.university_semester_id">
+              {{universitySemester.semester_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>University Question Name</mat-label>
+          <input matInput placeholder="Enter Question Name" formControlName="u_prev_ques_name">
+        </mat-form-field>
+  
+        <input type="file" id="pdf_files" (change)="ImageUpload($event)" formControlName="u_prev_ques_file">
+  
+        <input type="number" [ngModel]="admin" formControlName="admin_id_fk" readonly hidden>
+        <input type="number" formControlName="university_prev_id" readonly hidden>
+      </form>
+  
+      <button mat-raised-button color="primary" class="submit_btn" (click)="addQuestion()">Submit</button>
+      <button mat-raised-button color="warn" class="reset_btn" (click)="reset()">Reset</button>
+    </div>
+  </div>

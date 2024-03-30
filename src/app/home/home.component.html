@@ -1,0 +1,16 @@
+<div class="sidebar_area">
+    <app-sidebar></app-sidebar>
+</div>
+<header>
+        <button  [matMenuTriggerFor]="menu">
+            <img src="assets/rohit.jpg" alt="admin img">
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/login_page">Logout</button>
+            <button mat-menu-item>Profile Update</button>
+        </mat-menu>
+    <span>Login As : Rohit Kumar</span>
+</header>
+<div class="main_area">
+    <router-outlet></router-outlet>
+</div>

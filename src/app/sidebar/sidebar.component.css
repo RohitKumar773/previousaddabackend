@@ -1,0 +1,51 @@
+.sidebar_area{
+    width: 300px;
+    height: 100vh;
+    float: left;
+    background: linear-gradient(to right, #494a4c, #6b6969);
+    overflow: auto;
+}
+.logo{
+    width: 100%;
+    height: 70px;
+    float: left;
+    background: linear-gradient(to right, #494a4c, #6b6969);
+    color: white;
+    font-size: 28px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 22px;
+    border-bottom: 1px solid gray;
+}
+.menu_area{
+    width: 100%;
+    height: auto;
+    float: left;
+    margin-top: 35px;
+}
+.menu_area button{
+    width: calc(100% - 5%);
+    height: auto;
+    margin: 2px 2.5%;
+    float: left;
+    font-size: 16px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding: 6px;
+    line-height: 30px;
+    border: none;
+    text-align: left;
+    background: none;
+    color: white;
+    transition: 0.4s;
+}
+.menu_area button mat-icon{
+   float: left;
+   opacity: 0.9;
+}
+.menu_area button:hover{
+    background-color: rgba(49, 49, 49, 0.25);
+    border-radius: 5px;
+}
+.menu_area button:focus{
+    background-color: rgba(49, 49, 49, 0.25);
+    border-radius: 5px;
+}

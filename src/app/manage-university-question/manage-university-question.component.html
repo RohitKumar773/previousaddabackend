@@ -1,0 +1,80 @@
+<div id="head">
+    <div class="category">
+      Manage University Question
+    </div>
+    <div class="add_button">
+      <mat-icon (click)="add_university_question()">add_circle</mat-icon>
+    </div>
+  </div>
+  
+  <div class="search_box_area">
+    <div class="total_data">Total : {{qsData}}</div>
+    <input matInput (keyup)="applyFilter($event)" type="search" placeholder="Search Table..." #input>
+  </div>
+  
+  <div class="table_area">
+  
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+  
+        <!-- Question ID Column -->
+        <ng-container matColumnDef="university_prev_id">
+          <th mat-header-cell *matHeaderCellDef> S.N. </th>
+          <td mat-cell *matCellDef="let element; let i = index;"> {{(paginatorRef.pageIndex * paginatorRef. pageSize)+(i+1)}} </td>
+        </ng-container>
+  
+        <!-- University Name Column -->
+        <ng-container matColumnDef="university_id_fk">
+          <th mat-header-cell *matHeaderCellDef> University Name</th>
+          <td mat-cell *matCellDef="let element"> {{element.university_name}} </td>
+        </ng-container>
+  
+        <!-- University Course Name Column -->
+        <ng-container matColumnDef="univ_crse_id_fk">
+          <th mat-header-cell *matHeaderCellDef> Course </th>
+          <td mat-cell *matCellDef="let element"> {{element.university_course_name}} </td>
+        </ng-container>
+  
+        <!-- University Semester Column -->
+        <ng-container matColumnDef="univ_smstr_id_fk">
+          <th mat-header-cell *matHeaderCellDef> Semester </th>
+          <td mat-cell *matCellDef="let element"> {{element.semester_name}} </td>
+        </ng-container>
+  
+        <!-- Question Name Column -->
+        <ng-container matColumnDef="u_prev_ques_name">
+          <th mat-header-cell *matHeaderCellDef> Question Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.u_prev_ques_name}} </td>
+        </ng-container>
+  
+        <!-- Question File Column -->
+        <ng-container matColumnDef="u_prev_ques_file">
+          <th mat-header-cell *matHeaderCellDef> File </th>
+          <td mat-cell *matCellDef="let element">
+            <a href="{{imageUrl}}{{element.u_prev_ques_file}}" title="PDF Notes">
+              <mat-icon>picture_as_pdf</mat-icon>
+            </a>  
+          </td>
+        </ng-container>
+        
+        <!-- Action Column -->
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef> Symbol </th>
+          <td mat-cell *matCellDef="let row"> 
+            <mat-icon>edit</mat-icon>  
+            <mat-icon (click)="deleteUniversityQuestion(row)">delete</mat-icon>  
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+  
+      <mat-paginator #paginatorRef [pageSizeOptions]="[5, 10, 20]" 
+      showFirstLastButtons aria-label="Select page of periodic elements">
+      </mat-paginator>
+    </div>
+  
+  
+  
+  </div>

@@ -1,0 +1,45 @@
+<div class="add_form">
+    <div class="form_head">
+      <div class="form_title">
+        Add Board Question
+      </div>
+      <div class="cancel_tn">
+        <mat-icon mat-dialog-close>cancel</mat-icon>
+      </div>
+    </div>
+  
+    <div class="form_area">
+      <form [formGroup]="boardQuestionForm">
+  
+        <mat-form-field style="margin-top: 10%;">
+          <mat-label>Select Board</mat-label>
+          <mat-select disableRipple formControlName="board_id_fk" (valueChange)="getBoardClass($event)">
+            <mat-option *ngFor="let boardQuestion of brdQuestionData" [value]="boardQuestion.board_id">
+              {{boardQuestion.board_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field>
+          <mat-label>Select Class</mat-label>
+          <mat-select disableRipple formControlName="board_cls_id_fk">
+            <mat-option *ngFor="let boardClass of classData" [value]="boardClass.b_class_id">
+              {{boardClass.class_name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  
+        <mat-form-field appearance="fill">
+          <mat-label>Board Question Name</mat-label>
+          <input matInput placeholder="Enter Question Name" formControlName="b_prev_ques_name">
+        </mat-form-field>
+  
+        <input type="file" name="" id="pdf_files" (change)="ImageUpload($event)" formControlName="b_prev_ques_file">
+  
+        <input type="number" [ngModel]="admin" formControlName="admin_id_fk" readonly hidden>
+        <input type="number" formControlName="b_previous_id" readonly hidden>
+      </form>
+      <button mat-raised-button color="primary" class="submit_btn" (click)="addBoardQuestion()">Submit</button>
+      <button mat-raised-button color="warn" class="reset_btn" (click)="reset()">Reset</button>
+    </div>
+  </div>

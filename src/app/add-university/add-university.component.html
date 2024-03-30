@@ -1,0 +1,26 @@
+<div class="add_form">
+    <div class="form_head">
+        <div class="form_title">
+            {{boxTitle}}
+        </div>
+        <div class="cancel_tn">
+            <mat-icon mat-dialog-close>cancel</mat-icon>
+        </div>
+    </div>
+
+    <div class="form_area">
+        <form [formGroup]="universityFrom">
+
+            <mat-form-field appearance="fill">
+                <mat-label>University Name</mat-label>
+                <input matInput placeholder="Enter University Name" formControlName="university_name">
+            </mat-form-field>
+
+            <input type="number" [ngModel]="admin" formControlName="admin_id_fk" readonly hidden>
+            <input type="number" formControlName="university_id" readonly hidden>
+        </form>
+        <button mat-raised-button color="primary" class="submit_btn" (click)="add_university()" 
+        [disabled]="!universityFrom.valid">{{actionButton}}</button>
+        <button mat-raised-button color="warn" class="reset_btn" (click)="reset()">Reset</button>
+    </div>
+</div>

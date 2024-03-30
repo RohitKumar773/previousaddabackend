@@ -1,0 +1,36 @@
+<div class="add_form">
+    <div class="form_head">
+        <div class="form_title">
+            {{boxTitle}}
+        </div>
+        <div class="cancel_tn">
+            <mat-icon mat-dialog-close>cancel</mat-icon>
+        </div>
+    </div>
+
+    <div class="form_area">
+        <form [formGroup]="universityCourseForm">
+
+            <mat-form-field style="margin-top: 10%;">
+                <mat-label>Select University</mat-label>
+                <mat-select disableRippl formControlName="university_id_fk">
+                    <!-- <mat-option value="one">BRABU</mat-option> -->
+                    <mat-option *ngFor="let university_course of courseData" [value]="university_course.university_id">
+                        {{university_course.university_name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>University Course</mat-label>
+                <input matInput placeholder="Enter University Course Name" formControlName="university_course_name">
+            </mat-form-field>
+
+            <input type="number" [ngModel]="admin" formControlName="admin_id_fk" readonly hidden>
+            <input type="number" formControlName="university_course_id" readonly hidden>
+        </form>
+        <button mat-raised-button color="primary" class="submit_btn" (click)="add_course()" 
+        [disabled]="!universityCourseForm.valid">{{actionButton}}</button>
+        <button mat-raised-button color="warn" class="reset_btn" (click)="reset_course()">Reset</button>
+    </div>
+</div>
